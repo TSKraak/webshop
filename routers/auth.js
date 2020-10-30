@@ -31,7 +31,7 @@ router.post("/", async (req, res, next) => {
     // 3. if the password is correct, return a JWT with the userId of the user (user.id)
     const jwt = toJWT({ userId: user.id });
     console.log("JWT TOKEN:", jwt);
-    return res.json(`Welcome ${user.fullName}, here's your token: ${jwt}`);
+    return res.json(`Welcome ${user.firstName}, here's your token: ${jwt}`);
   }
   res.status(400).json("Password was incorrect");
 });

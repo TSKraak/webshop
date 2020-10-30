@@ -7,6 +7,7 @@ const orderRouter = require("./routers/order");
 const categoryRouter = require("./routers/category");
 const productRouter = require("./routers/product");
 const authRouter = require("./routers/auth");
+const authMiddleware = require("./auth/middleware");
 
 app.use(jsonParser);
 
@@ -14,7 +15,7 @@ app.use("/login", authRouter);
 app.use("/users", userRouter);
 app.use("/products", productRouter);
 app.use("/categories", categoryRouter);
-app.use("/orders", orderRouter);
+app.use("/orders", authMiddleware, orderRouter);
 
 function onListen() {
   console.log(`Listening on :${port}`);

@@ -1,6 +1,7 @@
 const express = require("express");
 const { product: Product, category: Category } = require("../models");
 const { Router } = express;
+const authMiddleware = require("../auth/middleware");
 
 const router = new Router();
 
@@ -31,8 +32,14 @@ router.get("/:productId", async (req, res, next) => {
   }
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/", authMiddleware, async (req, res, next) => {
   const { categoryId, name, imageUrl, priceEuroCent, status } = req.body;
+  const user = req.user;
+  console.log("this is user", user);
+  if (user.admin !== true) {
+    res.status(401).send("unauthorized");
+    return;
+  }
   if (!categoryId || !name || !imageUrl || !priceEuroCent || !status) {
     res.status(400).send("missing product info");
     return;
