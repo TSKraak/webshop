@@ -6,11 +6,11 @@ const userRouter = require("./routers/user");
 const orderRouter = require("./routers/order");
 const categoryRouter = require("./routers/category");
 const productRouter = require("./routers/product");
-// const authRouter = require("./routers/auth");
+const authRouter = require("./routers/auth");
 
 app.use(jsonParser);
 
-// app.use("/login", authRouter);
+app.use("/login", authRouter);
 app.use("/users", userRouter);
 app.use("/products", productRouter);
 app.use("/categories", categoryRouter);
