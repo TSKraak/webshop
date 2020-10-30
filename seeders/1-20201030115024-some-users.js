@@ -33,6 +33,20 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          firstName: "Rein",
+          lastName: "Op 't land",
+          street: "Overtoom",
+          number: "123",
+          zipCode: "1033CB",
+          country: "Netherlands",
+          email: "rein@land.com",
+          phone: "+31-2575323423",
+          password: "test3",
+          admin: false,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

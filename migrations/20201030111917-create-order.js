@@ -11,6 +11,12 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "users",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       status: {
         type: Sequelize.ENUM(["Pending", "Processed", "Shipped", "Delivered"]),
