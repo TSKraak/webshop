@@ -20,8 +20,8 @@ npx sequelize-cli model:generate --name orderItem --attributes orderId:integer,p
 [x] Models aanmaken
 [x] database checken met migratie
 [x] dummy data seeden
-[] relaties aangeven
-[] querying om te testen
+[x] relaties aangeven
+[x] querying om te testen
 [] restfull server maken, incl. routes
 [] routes testen
 [] authorization toevoegen
