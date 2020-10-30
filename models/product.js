@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       categoryId: { type: DataTypes.INTEGER, allowNull: false },
       name: { type: DataTypes.STRING, allowNull: false },
       imageUrl: { type: DataTypes.STRING, allowNull: false, unique: true },
-      priceInCents: { type: DataTypes.INTEGER, allowNull: false },
+      priceEuroCent: { type: DataTypes.INTEGER, allowNull: false },
       status: {
         type: DataTypes.ENUM(["In stock", "Out of stock"]),
         allowNull: true,

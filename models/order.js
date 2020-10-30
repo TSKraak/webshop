@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.ENUM(["Pending", "Processed", "Shipped", "Delivered"]),
         allowNull: true,
       },
-      pricePerUnitPerCent: { type: DataTypes.INTEGER, allowNull: false },
+      priceEuroCentPerUnit: { type: DataTypes.INTEGER, allowNull: false },
     },
     {
       sequelize,

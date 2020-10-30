@@ -17,8 +17,8 @@ npx sequelize-cli model:generate --name orderItem --attributes orderId:integer,p
 
 ## To Do
 
-[] Models aanmaken
-[] database checken met migratie
+[x] Models aanmaken
+[x] database checken met migratie
 [] dummy data seeden
 [] relaties aangeven
 [] querying om te testen
@@ -27,3 +27,12 @@ npx sequelize-cli model:generate --name orderItem --attributes orderId:integer,p
 [] authorization toevoegen
 [] Final test
 [] functionaliteiten toevoegen?
+
+## seeders
+
+User:
+npx sequelize-cli seed:generate --name some-users
+npx sequelize-cli seed:generate --name some-orders
+npx sequelize-cli seed:generate --name some-order-items
+npx sequelize-cli seed:generate --name some-categories
+npx sequelize-cli seed:generate --name some-products

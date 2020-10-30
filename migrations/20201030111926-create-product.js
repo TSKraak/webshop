@@ -21,7 +21,7 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      priceInCents: {
+      priceEuroCent: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
