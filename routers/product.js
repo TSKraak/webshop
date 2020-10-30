@@ -46,17 +46,17 @@ router.post("/", async (req, res, next) => {
       priceEuroCent,
       status,
     });
-    console.log(newProduct.status);
-    if (
-      newProduct.status !== "In stock" ||
-      newProduct.status !== "Out of stock"
-    ) {
-      res.status(400).send("invalid stock status");
-      return;
-    }
   } catch (e) {
-    res.status(400).send("Product allready exists");
-    next(e);
+    switch (e.name) {
+      case "SequelizeUniqueConstraintError":
+        return res.status(400).send("Product already exists");
+
+      case "SequelizeDatabaseError":
+        return res.status(400).send(e.message);
+
+      default:
+        return res.status(400).send("Something went wrong.");
+    }
   }
   res.send(newProduct);
 });
