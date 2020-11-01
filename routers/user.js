@@ -59,9 +59,8 @@ router.post("/", async (req, res, next) => {
     return;
   }
   const hashedPassword = bcrypt.hashSync(password, 10);
-  let newUser;
   try {
-    newUser = await User.create({
+    const newUser = await User.create({
       firstName,
       lastName,
       street,
@@ -72,10 +71,11 @@ router.post("/", async (req, res, next) => {
       phone,
       password: hashedPassword,
     });
+    res.send(newUser);
   } catch (e) {
-    res.status(400).send("user allready exists", e.message);
+    res.status(400).json("User with this email already exists");
+    next(e);
   }
-  res.send(newUser);
 });
 
 module.exports = router;
