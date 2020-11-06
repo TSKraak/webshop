@@ -37,4 +37,4 @@ npx sequelize-cli seed:generate --name some-order-items
 npx sequelize-cli seed:generate --name some-categories
 npx sequelize-cli seed:generate --name some-products
 
-Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYwNDA3NDUwOSwiZXhwIjoxNjA0MDgxNzA5fQ.fbfanBjHZV86mxgrncJtyOG-4JwHIOjBSYslcTen7aM"
+Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTYwNDE2MDkxOSwiZXhwIjoxNjA0MTY4MTE5fQ.XSl8y5RSjkpwRpyEAy68IP1G_rCQ_iKXDpgoRtBDm1E"
