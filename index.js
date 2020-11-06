@@ -8,7 +8,9 @@ const categoryRouter = require("./routers/category");
 const productRouter = require("./routers/product");
 const authRouter = require("./routers/auth");
 const authMiddleware = require("./auth/middleware");
+const cors = require("cors");
 
+app.use(cors());
 app.use(jsonParser);
 
 app.use("/login", authRouter);
