@@ -9,7 +9,7 @@ router.get("/", async (req, res, next) => {
   try {
     const users = await User.findAll();
     if (!users) {
-      res.status(404).send("no users found");
+      res.status(404).send("No users found");
     } else {
       res.send(users);
     }
