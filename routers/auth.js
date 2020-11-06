@@ -36,4 +36,13 @@ router.post("/", async (req, res, next) => {
   res.status(400).json("Password was incorrect");
 });
 
+router.get("/me", authMiddleware, async (req, res, next) => {
+  const user = req.user;
+  try {
+    res.send(user);
+  } catch (e) {
+    next(e);
+  }
+});
+
 module.exports = router;

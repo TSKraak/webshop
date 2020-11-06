@@ -2,7 +2,6 @@ const express = require("express");
 const { Router } = express;
 const { user: User } = require("../models");
 const bcrypt = require("bcrypt");
-const authMiddleware = require("../auth/middleware");
 
 const router = new Router();
 
@@ -19,24 +18,15 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// router.get("/:userId", async (req, res, next) => {
-//   const userId = req.params.userId;
-//   try {
-//     const user = await User.findByPk(userId);
-//     if (!user) {
-//       res.status(404).send("User not found");
-//     } else {
-//       res.send(user);
-//     }
-//   } catch (e) {
-//     next(e);
-//   }
-// });
-
-router.get("/me", authMiddleware, async (req, res, next) => {
-  const user = req.user;
+router.get("/:userId", async (req, res, next) => {
+  const userId = req.params.userId;
   try {
-    res.send(user);
+    const user = await User.findByPk(userId);
+    if (!user) {
+      res.status(404).send("User not found");
+    } else {
+      res.send(user);
+    }
   } catch (e) {
     next(e);
   }
