@@ -14,23 +14,23 @@ module.exports = {
       },
       lastName: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       street: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       number: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       zipCode: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       country: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       email: {
         type: Sequelize.STRING,

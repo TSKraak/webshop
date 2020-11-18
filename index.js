@@ -9,6 +9,10 @@ const productRouter = require("./routers/product");
 const authRouter = require("./routers/auth");
 const authMiddleware = require("./auth/middleware");
 const cors = require("cors");
+const { graphqlExpress, ApolloServer } = require("apollo-server-express");
+const resolvers = require("./graphql/resolvers");
+const db = require("./models");
+const { typeDefs } = require("./graphql/schema");
 
 app.use(cors());
 app.use(jsonParser);
@@ -18,6 +22,13 @@ app.use("/users", userRouter);
 app.use("/products", productRouter);
 app.use("/categories", categoryRouter);
 app.use("/orders", authMiddleware, orderRouter);
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: ({ req }) => ({ req, db }),
+});
+server.applyMiddleware({ app });
 
 function onListen() {
   console.log(`Listening on :${port}`);
