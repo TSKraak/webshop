@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       userId: { type: DataTypes.INTEGER, allowNull: false },
       status: {
         type: DataTypes.ENUM(["Pending", "Processed", "Shipped", "Delivered"]),
+        defaultValue: "Pending",
         allowNull: true,
       },
       priceEuroCentPerUnit: { type: DataTypes.INTEGER, allowNull: false },

@@ -17,6 +17,7 @@ module.exports = {
       return db.order.findAll({ include: [db.product] });
     },
   },
+
   Mutation: {
     signup: async (parent, { firstName, email, password }, { db }, info) => {
       const hashedPassword = bcrypt.hashSync(password, 10);
@@ -40,6 +41,31 @@ module.exports = {
       if (!passwordsMatch) return new ApolloError("Password incorrect", 400);
       const token = toJWT({ userId: user.id });
       return { token };
+    },
+
+    order: async (
+      parent,
+      { productIds, userId, priceEuroCentPerUnit },
+      { db },
+      info
+    ) => {
+      const newOrder = await db.order.create({ userId, priceEuroCentPerUnit });
+
+      const newOrderItems = productIds.map(
+        async (id) =>
+          await db.orderItem.create({
+            productId: id,
+            orderId: newOrder.id,
+            quantity: 1,
+          })
+      ); // [Promise, Promise, Promise]
+
+      await Promise.all(newOrderItems);
+      const fullNewOrder = await db.order.findByPk(newOrder.id, {
+        include: [db.user, { model: db.product, include: [db.category] }],
+      });
+      // console.log("FULLNEWORDER:", fullNewOrder);
+      return fullNewOrder;
     },
   },
 };

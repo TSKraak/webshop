@@ -54,7 +54,7 @@ const typeDefs = gql`
   type Mutation {
     signup(firstName: String!, email: String!, password: String!): User!
     login(email: String!, password: String!): Login!
-    order(productIds: [Int!]!, userId: Int!): Order!
+    order(productIds: [Int!], userId: Int!, priceEuroCentPerUnit: Int!): Order!
   }
 `;
 
